@@ -1,6 +1,7 @@
 #include "ConstAddAnalysisPass.h"
 #include "ConstantFoldingPass.h"
 #include "ReplaceMulWithShift.h"
+#include "ReplaceDivWithShift.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -18,6 +19,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     }
     if(Name == "replace-mul") {
 	    FPM.addPass(ReplaceMulWithShift());
+	    return true;
+    }
+    if(Name == "replace-div") {
+	    FPM.addPass(ReplaceDivWithShift());
 	    return true;
     }
     return false;
