@@ -19,6 +19,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 
 add_library(PracticeLLVMPasses MODULE
         lib/ConstAddAnalysisPass.cpp
+	lib/ConstantFoldingPass.cpp
         lib/PassPlugin.cpp)
 
 target_include_directories(PracticeLLVMPasses PRIVATE

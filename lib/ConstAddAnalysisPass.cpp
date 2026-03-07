@@ -9,8 +9,8 @@ PreservedAnalyses ConstAddAnalysisPass::run(Function &F, FunctionAnalysisManager
     outs() << F.getName() << "\n";
     Result res = getAddInstWithConstOperands(F);
     for(Instruction* I : res) {
-        outs() << I->getOpcodeName() << " " << *(I->getOperand(0)) << " " 
-            << *(I->getOperand(1)) << "\n";
+        outs() << I->getOpcodeName() << " " << I->getOperand(0) << " " 
+            << I->getOperand(1) << "\n";
     }
     return PreservedAnalyses::all();
 }

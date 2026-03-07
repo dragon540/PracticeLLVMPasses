@@ -1,4 +1,5 @@
 #include "ConstAddAnalysisPass.h"
+#include "ConstantFoldingPass.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -9,6 +10,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     if (Name == "add-const-analysis") {
         FPM.addPass(ConstAddAnalysisPass());
         return true;
+    }
+    if(Name == "const-folding") {
+	FPM.addPass(ConstantFoldingPass());
+	return true;
     }
     return false;
 }
