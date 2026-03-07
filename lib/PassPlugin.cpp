@@ -1,5 +1,6 @@
 #include "ConstAddAnalysisPass.h"
 #include "ConstantFoldingPass.h"
+#include "ReplaceMulWithShift.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -14,6 +15,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     if(Name == "const-folding") {
 	FPM.addPass(ConstantFoldingPass());
 	return true;
+    }
+    if(Name == "replace-mul") {
+	    FPM.addPass(ReplaceMulWithShift());
+	    return true;
     }
     return false;
 }
