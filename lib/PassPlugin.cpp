@@ -2,6 +2,7 @@
 #include "ConstantFoldingPass.h"
 #include "ReplaceMulWithShift.h"
 #include "ReplaceDivWithShift.h"
+#include "DeadCodeElimination.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -23,6 +24,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     }
     if(Name == "replace-div") {
 	    FPM.addPass(ReplaceDivWithShift());
+	    return true;
+    }
+    if(Name == "dead-code-elim") {
+	    FPM.addPass(DeadCodeElimination());
 	    return true;
     }
     return false;

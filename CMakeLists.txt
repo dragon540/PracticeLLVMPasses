@@ -22,6 +22,7 @@ add_library(PracticeLLVMPasses MODULE
 	lib/ConstantFoldingPass.cpp
 	lib/ReplaceMulWithShift.cpp
 	lib/ReplaceDivWithShift.cpp
+	lib/DeadCodeElimination.cpp
         lib/PassPlugin.cpp)
 
 target_include_directories(PracticeLLVMPasses PRIVATE
