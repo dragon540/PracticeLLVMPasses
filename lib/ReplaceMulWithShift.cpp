@@ -2,7 +2,7 @@
 
 using namespace llvm;
 
-int isPowerOf2(int temp)
+int isPowOf2(int temp)
 {
 	int pow = 0;
 	while(temp%2==0 && temp > 1) {
@@ -50,7 +50,7 @@ PreservedAnalyses ReplaceMulWithShift::run(Function &F, FunctionAnalysisManager 
 				}
 				// check if const is power of 2
 				auto num = constVal->getSExtValue();
-				int exp = isPowerOf2(num);
+				int exp = isPowOf2(num);
 				if(exp == -1)
 					continue;
 				else 
