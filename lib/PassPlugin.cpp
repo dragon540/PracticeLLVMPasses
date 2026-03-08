@@ -3,6 +3,7 @@
 #include "ReplaceMulWithShift.h"
 #include "ReplaceDivWithShift.h"
 #include "DeadCodeElimination.h"
+#include "TailCallOptimization.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -28,6 +29,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     }
     if(Name == "dead-code-elim") {
 	    FPM.addPass(DeadCodeElimination());
+	    return true;
+    }
+    if(Name == "tail-call-opt") {
+	    FPM.addPass(TailCallOptimization());
 	    return true;
     }
     return false;
