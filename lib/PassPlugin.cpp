@@ -4,6 +4,7 @@
 #include "ReplaceDivWithShift.h"
 #include "DeadCodeElimination.h"
 #include "TailCallOptimization.h"
+#include "GenInterferenceGraph.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 
@@ -33,6 +34,10 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     }
     if(Name == "tail-call-opt") {
 	    FPM.addPass(TailCallOptimization());
+	    return true;
+    }
+    if(Name == "gen-interference-graph") {
+	    FPM.addPass(GenInterferenceGraph());
 	    return true;
     }
     return false;

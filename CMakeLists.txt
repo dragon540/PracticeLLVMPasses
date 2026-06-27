@@ -24,6 +24,7 @@ add_library(PracticeLLVMPasses MODULE
 	lib/ReplaceDivWithShift.cpp
 	lib/DeadCodeElimination.cpp
 	lib/TailCallOptimization.cpp
+	lib/GenInterferenceGraph.cpp
         lib/PassPlugin.cpp)
 
 target_include_directories(PracticeLLVMPasses PRIVATE
